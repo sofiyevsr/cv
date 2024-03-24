@@ -1,0 +1,35 @@
+---
+interface Props {
+  content: string;
+  interval?: number;
+}
+const { content, interval = 20 } = Astro.props;
+---
+
+<type-writer data-message={content} data-interval={interval}>
+  <span class="real absolute top-0 left-0 right-0 bottom-0 select-none"></span>
+  <span class="opacity-10">{content}</span>
+</type-writer>
+
+<script>
+  class TypeWriter extends HTMLElement {
+    private timer: NodeJS.Timeout;
+    private state = 0;
+    constructor() {
+      super();
+      const content = this.dataset.message as string;
+      const interval = Number(this.dataset.interval);
+      const span = this.querySelector(".real");
+      this.timer = setInterval(() => {
+        if (++this.state > content.length || !span)
+          return clearInterval(this.timer);
+        span.innerHTML = content.substring(0, this.state);
+      }, interval);
+    }
+    disconnectedCallback() {
+      clearInterval(this.timer);
+    }
+  }
+
+  customElements.define("type-writer", TypeWriter);
+</script>

@@ -1,0 +1,30 @@
+---
+import { userData } from "@utils/constants";
+import { Icon } from "astro-icon/components";
+
+const { firstName, lastName, links } = userData;
+---
+
+<div class="navbar">
+  <div class="flex-1">
+    <a href="/" class="btn btn-ghost text-xl">{firstName + " " + lastName}</a>
+  </div>
+  <div>
+    <ul class="menu menu-horizontal px-1 py-0 h-full text-md font-bold">
+      <li><a href={"/"}>About</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li>
+        <a target="_blank" href={links.github}>
+          <span>Github</span>
+          <Icon name="flowbite:arrow-up-right-from-square-outline" size={12} />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<style>
+  .navbar {
+    max-width: var(--maxWidth);
+    margin: auto;
+  }
+</style>

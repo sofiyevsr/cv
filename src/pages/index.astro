@@ -1,0 +1,46 @@
+---
+import Layout from "@layouts/Layout.astro";
+import TypeWriter from "@components/home/TypeWriter.astro";
+import Projects from "@components/home/Projects.astro";
+import Experience from "@components/home/Experience.astro";
+import RecentBlogs from "@components/home/RecentBlogs.astro";
+import SectionAnchor from "@components/home/SectionAnchor.astro";
+import { userData, technologies } from "@utils/constants";
+
+const { firstName } = userData;
+---
+
+<Layout>
+  <section class="py-12">
+    <div class="flex flex-col overflow-hidden lg:flex-row">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold font-roboto font-bold lg:text-4xl">
+          Hey, I'm <span class="text-5xl text-accent font-roboto font-bold"
+            >{firstName.toUpperCase()}</span
+          >
+        </h2>
+        <p class="flex-1 my-8 relative text-lg">
+          <TypeWriter
+            content="Full-Stack Developer with a deep understanding of modern web and mobile development. I'm a lifelong learner, constantly seeking new challenges and opportunities to expand my skillset."
+          />
+        </p>
+        {
+          technologies.map((t) => (
+            <p>
+              <span class="text-2xl">{t.emoji}</span>
+              <strong class="text-lg relative z-10 before:-z-10 before:absolute before:bg-accent before:h-0.5 before:bottom-0 before:transition-[width] before:w-full">
+                {t.title}:
+              </strong>
+              <span>{t.techs.join(", ")}</span>
+            </p>
+          ))
+        }
+      </div>
+      <img class="animate-wiggleY" src="/coding.png" width="340" />
+    </div>
+    <SectionAnchor />
+    <Experience />
+    <Projects />
+    <RecentBlogs />
+  </section>
+</Layout>

@@ -1,0 +1,28 @@
+---
+import slugify from "slugify";
+import { Image } from "astro:assets";
+import type { z } from "astro:content";
+import type { blogSchema } from "../utils/validations";
+
+interface Props {
+  blog: z.infer<typeof blogSchema>;
+}
+const { blog } = Astro.props;
+const slug = slugify(blog.title, { lower: true, strict: true });
+---
+
+<a href={"/blog/" + slug} class="card rounded-xl bg-base-100 shadow-lg group">
+  <figure class="h-48">
+    <Image
+      class="object-cover h-full w-full transition-all group-hover:scale-110"
+      src={blog.image.url}
+      alt={blog.image.alt}
+    />
+  </figure>
+  <div class="card-body px-4 py-2 h-42">
+    <h2 title={blog.title} class="card-title text-lg line-clamp-2">
+      {blog.title}
+    </h2>
+    <p class="line-clamp-4 text-sm">{blog.description}</p>
+  </div>
+</a>

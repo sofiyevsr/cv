@@ -1,0 +1,46 @@
+---
+import cn from "classnames";
+import { experiences } from "@utils/constants";
+---
+
+<section id="experience">
+  <h3 class="text-4xl font-bold my-4">Experience</h3>
+  <ul
+    class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+  >
+    {
+      experiences.map((exp, index) => (
+        <li>
+          <div class="timeline-middle">
+            <div class="-translate-y-[3px] h-4 w-4 rounded-full bg-black" />
+          </div>
+          <div
+            class={cn("md:text-end mb-10", {
+              "timeline-start": index % 2 === 0,
+              "timeline-end": index % 2 === 1,
+            })}
+          >
+            <time class="font-mono italic">{exp.dateRange.join(", ")}</time>
+            <div class="text-lg font-black">{exp.title}</div>
+            <p>{exp.subtitle}</p>
+            <ul class="list-disc mx-4">
+              {exp.details.map((detail) => (
+                <li class="my-4">
+                  <h4>{detail.description}</h4>
+                  <div>
+                    {detail.techs.map((tech) => (
+                      <span class="m-0.5 font-bold badge badge-accent text-white h-auto">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <hr class="rounded-full" />
+        </li>
+      ))
+    }
+  </ul>
+</section>

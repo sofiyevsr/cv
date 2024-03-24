@@ -1,0 +1,18 @@
+---
+import { getBlogPosts } from "@utils/blogHelpers";
+import BlogCard from "../BlogCard.astro";
+
+const blogs = (await getBlogPosts())
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
+---
+
+<section id="posts">
+  <div class="flex flex-row justify-between items-center">
+    <h3 class="text-4xl font-bold my-4">Recent Posts</h3>
+    <a class="btn btn-link text-slate-800 text-lg" href="/blog"> All Posts</a>
+  </div>
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    {blogs.map((blog) => <BlogCard blog={blog.data} />)}
+  </div>
+</section>

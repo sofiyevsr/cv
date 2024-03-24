@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon/components";
+
+const elements = [
+  {
+    title: "Experience",
+    href: "#experience",
+    icon: "flowbite:book-open-outline",
+  },
+  {
+    title: "Side Projects",
+    href: "#projects",
+    icon: "flowbite:folder-open-outline",
+  },
+  {
+    title: "Recent Posts",
+    href: "#posts",
+    icon: "flowbite:newspaper-outline",
+  },
+];
+---
+
+<section-anchor data-elements={JSON.stringify(elements)}>
+  <div
+    class="border-2 border-[#f0f0ff] p-1 text-center z-[9] sticky top-4 max-md:px-4 md:w-1/2 gap-1 flex flex-col md:gap-0 md:flex-row justify-between items-center rounded-lg backdrop-blur-sm text-lg mx-auto"
+  >
+    {
+      elements.map((el) => (
+        <div class="flex items-center">
+          <Icon class="font-bold text-gray-500" name={el.icon} size={24} />
+          <a
+            href={el.href}
+            class="relative text-center inline-block rounded-md mx-4 py-2 font-bold text-gray-500 hover:text-gray-700 before:block before:absolute before:bg-accent before:w-0 before:h-1 before:bottom-0 before:transition-[width]"
+          >
+            {el.title}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section-anchor>
+
+<script>
+  import { inView } from "motion";
+  class SectionAnchor extends HTMLElement {
+    constructor() {
+      super();
+      const links = this.querySelectorAll("a");
+      const elements = JSON.parse(this.dataset.elements as string) as {
+        title: string;
+        href: string;
+      }[];
+      elements.forEach(({ href }, idx) => {
+        const element = document.querySelector(href);
+        if (!element) return;
+        inView(element, () => {
+          links.item(idx).classList.remove("before:w-0");
+          links.item(idx).classList.add("before:w-full");
+
+          return () => {
+            links.item(idx).classList.remove("before:w-full");
+            links.item(idx).classList.add("before:w-0");
+          };
+        });
+      });
+    }
+  }
+
+  customElements.define("section-anchor", SectionAnchor);
+</script>

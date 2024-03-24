@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+import { projects } from "@utils/constants";
+---
+
+<section id="projects">
+  <h3 class="text-4xl font-bold my-4">Side Projects</h3>
+  {
+    projects.map((project) => (
+      <div class="w-full p-8 my-4 rounded-xl flex items-center transition-colors bg-base-200 bg-opacity-50 hover:bg-opacity-100">
+        <div class="flex-1 flex flex-col">
+          <h3 class="font-bold text-lg">{project.title}</h3>
+          <p class="my-4">{project.description}</p>
+          <div class="w-full md:w-3/4">
+            {project.techs.map((tech) => (
+              <span class="m-0.5 badge badge-accent font-bold text-white h-auto">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+        <a class="btn btn-ghost group" href={project.link} title="Source code" target="_blank">
+          <Icon
+            class="group-hover:text-white font-bold"
+            name="flowbite:arrow-up-right-from-square-outline"
+            size={24}
+          />
+        </a>
+      </div>
+    ))
+  }
+</section>

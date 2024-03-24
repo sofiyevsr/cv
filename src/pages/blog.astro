@@ -1,0 +1,16 @@
+---
+import BlogCard from "@components/BlogCard.astro";
+import Layout from "@layouts/Layout.astro";
+import { getBlogPosts } from "@utils/blogHelpers";
+
+const blogs = (await getBlogPosts()).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<Layout title="Rasul's Blog">
+  <h3 class="text-4xl font-bold my-4">All Posts</h3>
+  <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
+    {blogs.map((blog) => <BlogCard blog={blog.data} />)}
+  </div>
+</Layout>

@@ -1,0 +1,11 @@
+---
+title: How to use Websockets with Cloudflare Workers
+author: Test Author
+description: "This post will show up on its own!"
+image:
+    url: "../assets/spatial-query-postgresql.jpg"
+    alt: "The word astro against an illustration of planets and stars."
+pubDate: 2022-08-09
+tags: ["astro", "successes"]
+---
+This post should show up with my other blog posts, because `Astro.glob()` is returning a list of all my posts in order to create my list.

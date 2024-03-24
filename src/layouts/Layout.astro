@@ -1,0 +1,46 @@
+---
+import "@fontsource-variable/roboto-slab";
+import Navbar from "@components/Navbar.astro";
+import { constraints } from "@utils/constants";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ?? "Rasul Sofiyev's Personal Website"}</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+<style is:global define:vars={{ maxWidth: constraints.maxWidth }}>
+  html {
+    scroll-behavior: smooth;
+    background: #13151a;
+  }
+  body {
+    min-height: 100vh;
+    background-image: linear-gradient(rgb(240, 240, 255) 1px, transparent 1px),
+      linear-gradient(to right, rgb(240, 240, 255) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  main {
+    margin: auto;
+    padding: 1rem;
+    max-width: var(--maxWidth);
+  }
+</style>

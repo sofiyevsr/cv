@@ -1,0 +1,45 @@
+---
+import slugify from "slugify";
+import Layout from "@layouts/Layout.astro";
+import { getBlogPosts } from "@utils/blogHelpers";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const blogEntries = await getBlogPosts();
+  return blogEntries.map((entry) => ({
+    params: { slug: slugify(entry.data.title, { lower: true, strict: true }) },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { data } = entry;
+---
+
+<Layout title={data.title + " - Rasul's Blog"}>
+  <article class="prose mx-auto">
+    <div>
+      <h1 class="m-0">{data.title}</h1>
+      <span class="text-sm text-gray-600 self-center"
+        >By {data.author} on {
+          data.pubDate.toLocaleDateString("en-EN", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }</span
+      >
+    </div>
+    <figure class="h-96">
+      <Image
+        class="object-cover h-full w-full"
+        src={data.image.url}
+        alt={data.image.alt}
+      />
+    </figure>
+    <p>
+      <Content />
+    </p>
+  </article>
+</Layout>
