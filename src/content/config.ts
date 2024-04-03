@@ -1,4 +1,4 @@
-import { blogSchema } from "../utils/validations";
+import { blogSchema } from "@utils/validations";
 import { defineCollection } from "astro:content";
 
 const blogCollection = defineCollection({

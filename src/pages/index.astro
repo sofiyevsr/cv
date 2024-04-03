@@ -6,6 +6,8 @@ import Experience from "@components/home/Experience.astro";
 import RecentBlogs from "@components/home/RecentBlogs.astro";
 import SectionAnchor from "@components/home/SectionAnchor.astro";
 import { userData, technologies } from "@utils/constants";
+import { Image } from "astro:assets";
+import codingImage from "../assets/coding.png";
 
 const { firstName } = userData;
 ---
@@ -36,7 +38,12 @@ const { firstName } = userData;
           ))
         }
       </div>
-      <img class="animate-wiggleY" src="/coding.png" width="340" />
+      <Image
+        class="animate-wiggleY"
+        alt="coding boy"
+        src={codingImage}
+        width="340"
+      />
     </div>
     <SectionAnchor />
     <Experience />
