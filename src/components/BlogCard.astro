@@ -1,11 +1,10 @@
 ---
 import slugify from "slugify";
 import { Image } from "astro:assets";
-import type { z } from "astro:content";
-import type { blogSchema } from "../utils/validations";
+import type { getBlogPosts } from "@utils/blogHelpers";
 
 interface Props {
-  blog: z.infer<typeof blogSchema>;
+  blog: Awaited<ReturnType<typeof getBlogPosts>>[number]["data"];
 }
 const { blog } = Astro.props;
 const slug = slugify(blog.title, { lower: true, strict: true });
