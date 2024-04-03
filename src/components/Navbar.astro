@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 const { firstName, lastName, links } = userData;
 ---
 
-<div class="navbar">
+<div class="navbar flex-col sm:flex-row">
   <div class="flex-1">
     <a href="/" class="btn btn-ghost text-xl">{firstName + " " + lastName}</a>
   </div>
