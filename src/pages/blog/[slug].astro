@@ -19,16 +19,10 @@ const schema = getBlogSchema(data);
 ---
 
 <Layout title={data.title + " - Rasul's Blog"} description={data.description}>
-  <script
-    is:inline
-    slot="ldjson"
-    type="application/ld+json"
-    set:html={schema}
-  />
   <article class="prose mx-auto">
     <div>
       <h1 class="m-0">{data.title}</h1>
-      <span class="text-sm text-gray-600 self-center"
+      <span class="text-sm self-center"
         >By {data.author} on {
           data.pubDate.toLocaleDateString("en-EN", {
             weekday: "long",
@@ -50,4 +44,10 @@ const schema = getBlogSchema(data);
       <Content />
     </p>
   </article>
+  <script
+    is:inline
+    slot="ldjson"
+    type="application/ld+json"
+    set:html={schema}
+  />
 </Layout>
