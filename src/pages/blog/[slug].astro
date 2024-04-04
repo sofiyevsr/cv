@@ -2,6 +2,7 @@
 import slugify from "slugify";
 import Layout from "@layouts/Layout.astro";
 import { getBlogPosts } from "@utils/blogHelpers";
+import { getBlogSchema } from "@utils/seo";
 import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
@@ -14,9 +15,16 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const { data } = entry;
+const schema = getBlogSchema(data);
 ---
 
-<Layout title={data.title + " - Rasul's Blog"}>
+<Layout title={data.title + " - Rasul's Blog"} description={data.description}>
+  <script
+    is:inline
+    slot="ldjson"
+    type="application/ld+json"
+    set:html={schema}
+  />
   <article class="prose mx-auto">
     <div>
       <h1 class="m-0">{data.title}</h1>

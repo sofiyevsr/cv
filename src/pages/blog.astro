@@ -2,6 +2,7 @@
 import BlogCard from "@components/BlogCard.astro";
 import Layout from "@layouts/Layout.astro";
 import { getBlogPosts } from "@utils/blogHelpers";
+import { personSchema } from "@utils/seo";
 
 const blogs = (await getBlogPosts()).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -9,6 +10,12 @@ const blogs = (await getBlogPosts()).sort(
 ---
 
 <Layout title="Rasul's Blog">
+  <script
+    is:inline
+    slot="ldjson"
+    type="application/ld+json"
+    set:html={personSchema}
+  />
   <h3 class="text-4xl font-bold my-4">All Posts</h3>
   <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
     {blogs.map((blog) => <BlogCard blog={blog.data} />)}

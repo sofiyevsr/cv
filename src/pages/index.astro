@@ -6,6 +6,7 @@ import Experience from "@components/home/Experience.astro";
 import RecentBlogs from "@components/home/RecentBlogs.astro";
 import SectionAnchor from "@components/home/SectionAnchor.astro";
 import { userData, technologies } from "@utils/constants";
+import { personSchema } from "@utils/seo";
 import { Image } from "astro:assets";
 import codingImage from "../assets/coding.png";
 
@@ -13,6 +14,12 @@ const { firstName } = userData;
 ---
 
 <Layout>
+  <script
+    is:inline
+    slot="ldjson"
+    type="application/ld+json"
+    set:html={personSchema}
+  />
   <section class="py-12">
     <div class="flex flex-col overflow-hidden lg:flex-row">
       <div class="mb-8">

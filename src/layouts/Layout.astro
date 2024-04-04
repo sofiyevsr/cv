@@ -1,13 +1,17 @@
 ---
 import "@fontsource-variable/roboto-slab";
 import Navbar from "@components/Navbar.astro";
-import { constraints } from "@utils/constants";
+import { constraints, seoData } from "@utils/constants";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const title = Astro.props.title ?? "Rasul Sofiyev's Personal Website";
+const description =
+  Astro.props.description ??
+  "Full-Stack Developer with a deep understanding of modern web and mobile development. I'm a lifelong learner, constantly seeking new challenges and opportunities to expand my skillset.";
 ---
 
 <!doctype html>
@@ -16,9 +20,41 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title ?? "Rasul Sofiyev's Personal Website"}</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content={seoData.website} />
+    <meta property="og:image" content={seoData.image} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:url" content={seoData.website} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={seoData.image} />
+    <slot name="ldjson" />
+    <script is:inline>
+      function getPreferredColorScheme() {
+        if (!window.matchMedia) {
+          return "light";
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        } else {
+          return "light";
+        }
+      }
+      const theme = localStorage.getItem("theme") ?? getPreferredColorScheme();
+      if (["light", "dark"].includes(theme))
+        document.documentElement.setAttribute("data-theme", theme);
+    </script>
   </head>
   <body>
     <Navbar />
@@ -34,9 +70,21 @@ const { title } = Astro.props;
   }
   body {
     min-height: 100vh;
-    background-image: linear-gradient(rgb(240, 240, 255) 1px, transparent 1px),
-      linear-gradient(to right, rgb(240, 240, 255) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+  [data-theme="dark"] body {
+    background-image: linear-gradient(
+        rgba(200, 200, 200, 0.2) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to right, rgba(200, 200, 200, 0.2) 1px, transparent 1px);
+  }
+  [data-theme="light"] body {
+    background-image: linear-gradient(
+        rgba(200, 200, 200, .8) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to right, rgba(200, 200, 200, .8) 1px, transparent 1px);
   }
   main {
     margin: auto;

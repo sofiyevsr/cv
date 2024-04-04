@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        wiggleY: 'wiggleY 3s ease-in-out infinite',
+        wiggleY: "wiggleY 3s ease-in-out infinite",
       },
       keyframes: {
         wiggleY: {
@@ -23,6 +23,13 @@ export default {
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
-    themes: ["retro"],
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["retro"],
+        },
+      },
+      "dark",
+    ],
   },
 };

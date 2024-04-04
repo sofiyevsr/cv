@@ -1,3 +1,11 @@
+export const seoData = {
+  name: "Rasul Sofiyev",
+  website: "https://sofiyevsr.com",
+  email: "sofiyevsr99@gmail.com",
+  jobTitle: "Full Stack Developer",
+  image: "https://sofiyevsr.com/rs.jpg",
+};
+
 export const userData = {
   firstName: "Rasul",
   lastName: "Sofiyev",
