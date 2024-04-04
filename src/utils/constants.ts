@@ -28,6 +28,7 @@ export const technologies = [
       "ReactJS",
       "React Native",
       "Tailwind",
+      "Flutter",
     ],
   },
   {
@@ -45,7 +46,7 @@ export const technologies = [
   {
     emoji: "📚",
     title: "Skills I am working on",
-    techs: ["Golang", "Flutter", "Terraform", "Distributed Systems"],
+    techs: ["Golang", "Terraform", "Distributed Systems"],
   },
 ];
 
