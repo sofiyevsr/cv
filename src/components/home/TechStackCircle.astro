@@ -11,7 +11,7 @@ const icons = [
 ---
 
 <div
-  class="tech-stack my-16 relative animate-rotate rounded-full size-80 border-4 border-primary lg:my-4 lg:ml-4"
+  class="tech-stack my-16 relative animate-rotate rounded-full size-64 border-4 border-primary lg:size-80 lg:my-4 lg:ml-4"
 >
   <div
     class="absolute top-0 left-0 right-0 -z-10 h-full w-full scale-50 blur-[100px] bg-gradient-to-r from-teal-200 to-primary bg-[length:200%_200%] animate-[glow_5s_ease_infinite]"
@@ -20,7 +20,7 @@ const icons = [
   {
     icons.map((image, index) => (
       <div
-        class="tech-icon p-2 absolute top-1/2 left-1/2 -m-12 size-24 shadow-lg rounded-full"
+        class="tech-icon p-2 absolute top-1/2 left-1/2 -m-10 size-20 shadow-lg rounded-full lg:-m-12 lg:size-24"
         style={"--index:" + index}
       >
         <Icon class="w-full h-full text-primary" name={image} />
@@ -35,6 +35,12 @@ const icons = [
     background-color: oklch(var(--b1));
   }
 
+  @media screen(lg) {
+    .tech-icon {
+      animation: rotatelg 30s linear infinite;
+    }
+  }
+
   @keyframes glow {
     0% {
       background-position: 0% 50%;
@@ -47,13 +53,24 @@ const icons = [
     }
   }
 
-  @keyframes rotate {
+  @keyframes rotatelg {
     from {
       transform: rotate(calc(var(--index) * 60deg)) translate(160px)
         rotate(calc(var(--index) * -60deg));
     }
     to {
       transform: rotate(calc(var(--index) * 60deg + 360deg)) translate(160px)
+        rotate(calc(var(--index) * -60deg - 360deg));
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(calc(var(--index) * 60deg)) translate(128px)
+        rotate(calc(var(--index) * -60deg));
+    }
+    to {
+      transform: rotate(calc(var(--index) * 60deg + 360deg)) translate(128px)
         rotate(calc(var(--index) * -60deg - 360deg));
     }
   }
