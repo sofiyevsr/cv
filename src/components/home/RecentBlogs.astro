@@ -10,7 +10,7 @@ const blogs = (await getBlogPosts())
 <section id="posts">
   <div class="flex flex-row justify-between items-center">
     <h3 class="text-4xl font-bold my-4">Recent Posts</h3>
-    <a class="btn btn-link text-slate-800 text-lg" href="/blog"> All Posts</a>
+    <a class="btn btn-link text-slate-500 dark:text-base-content text-lg" href="/blog"> All Posts</a>
   </div>
   <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
     {blogs.map((blog) => <BlogCard blog={blog.data} />)}
