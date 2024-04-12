@@ -8,19 +8,6 @@ export default {
       ...defaultTheme.screens,
     },
     extend: {
-      animation: {
-        wiggleY: "wiggleY 3s ease-in-out infinite",
-      },
-      keyframes: {
-        wiggleY: {
-          "0%, 100%": { transform: "translateY(-8px)" },
-          "50%": { transform: "translateY(6px)" },
-        },
-        "bg-animate": {
-          "0%, 100%": { transform: "background-position: 0% 50%" },
-          "50%": { transform: "background-position: 100% 50%" },
-        },
-      },
       fontFamily: {
         roboto: ["Roboto Slab"],
       },

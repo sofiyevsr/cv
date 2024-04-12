@@ -9,6 +9,7 @@ export const blogSchema = z.object({
   image: z.object({
     url: z.string(),
     alt: z.string(),
+    caption: z.string().optional(),
   }),
   published: z.boolean().optional(),
 });

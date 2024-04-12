@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+const icons = [
+  "typescript",
+  "tailwind-css",
+  "react",
+  "node-js",
+  "postgresql",
+  "aws",
+];
+---
+
+<div
+  class="tech-stack relative animate-rotate rounded-full size-80 border-4 border-primary my-4 lg:ml-4"
+>
+  <div
+    class="absolute top-0 left-0 right-0 -z-10 h-full w-full scale-50 blur-[100px] bg-gradient-to-r from-teal-200 to-primary bg-[length:200%_200%] animate-[glow_5s_ease_infinite]"
+  >
+  </div>
+  {
+    icons.map((image, index) => (
+      <div
+        class="tech-icon p-2 absolute top-1/2 left-1/2 -m-12 size-24 shadow-lg rounded-full"
+        style={"--index:" + index}
+      >
+        <Icon class="w-full h-full text-primary" name={image} />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .tech-icon {
+    animation: rotate 30s linear infinite;
+    background-color: oklch(var(--b1));
+  }
+
+  @keyframes glow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(calc(var(--index) * 60deg)) translate(160px)
+        rotate(calc(var(--index) * -60deg));
+    }
+    to {
+      transform: rotate(calc(var(--index) * 60deg + 360deg)) translate(160px)
+        rotate(calc(var(--index) * -60deg - 360deg));
+    }
+  }
+</style>

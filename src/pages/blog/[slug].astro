@@ -40,6 +40,7 @@ const schema = getBlogSchema(data);
         alt={data.image.alt}
         height="384"
       />
+      <figcaption set:html={data.image.caption} />
     </figure>
     <p>
       <Content />
