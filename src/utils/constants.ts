@@ -134,6 +134,24 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "Multiplayer footballer guessing game",
+    description:
+      "Built a multiplayer game in which users have to guess name of football players' names with given clues in given time frame. There are multiple modes to play: Today's Challenge (changes every day by a cron job), Local (single player mode), Multiplayer (online mode with 2-5 players)",
+    link: "https://github.com/sofiyevsr/guess-the-footballer",
+    demo: "https://guessthefootballer.com",
+    techs: [
+      "Typescript",
+      "ReactJS",
+      "NextJS",
+      "WebSockets",
+      "Cloudflare Workers (Serverless)",
+      "Cloudflare KV",
+      "Cloudflare D1 (SQLite)",
+      "Cloudflare Durable Objects",
+    ],
+    active: true,
+  },
+  {
     title: "News aggregator",
     description:
       "Built an app that aggregates news from more than 50 hand-picked sources in 4 languages every 3 minutes. It was archived and removed from stores as of 01.2023",
@@ -153,13 +171,6 @@ export const projects = [
       "S3",
       "CloudWatch",
     ],
-  },
-  {
-    title: "Multiplayer guessing game",
-    description:
-      "Built a multiplayer game in which users have to guess name of football players' names with given clues in given time frame.",
-    link: "https://github.com/sofiyevsr/guess-the-footballer",
-    techs: ["Typescript", "NextJS", "PostgreSQL", "Redis", "Websockets"],
   },
   {
     title: "Asynchronous state management for Flutter",
