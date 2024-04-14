@@ -10,7 +10,7 @@ import { projects } from "@utils/constants";
     projects.map((project) => (
       <div
         class={clsx(
-          "relative w-full p-8 my-4 rounded-xl flex items-center transition-colors bg-base-200 bg-opacity-50 hover:bg-opacity-100",
+          "relative w-full p-8 my-4 rounded-xl flex flex-col items-center transition-colors bg-base-200 bg-opacity-50 hover:bg-opacity-100 sm:flex-row",
           { "border-4 border-primary": project.active }
         )}
       >
@@ -35,32 +35,34 @@ import { projects } from "@utils/constants";
             ))}
           </div>
         </div>
-        {project.demo && (
+        <div class="mt-8 sm:mt-0">
+          {project.demo && (
+            <a
+              class="btn btn-ghost group"
+              href={project.demo}
+              title="Link"
+              target="_blank"
+            >
+              <Icon
+                class="group-hover:text-white font-bold"
+                name="flowbite:arrow-up-right-from-square-outline"
+                size={24}
+              />
+            </a>
+          )}
           <a
             class="btn btn-ghost group"
-            href={project.demo}
-            title="Link"
+            href={project.link}
+            title="Source code"
             target="_blank"
           >
             <Icon
               class="group-hover:text-white font-bold"
-              name="flowbite:arrow-up-right-from-square-outline"
+              name="flowbite:file-zip-outline"
               size={24}
             />
           </a>
-        )}
-        <a
-          class="btn btn-ghost group"
-          href={project.link}
-          title="Source code"
-          target="_blank"
-        >
-          <Icon
-            class="group-hover:text-white font-bold"
-            name="flowbite:file-zip-outline"
-            size={24}
-          />
-        </a>
+        </div>
       </div>
     ))
   }
