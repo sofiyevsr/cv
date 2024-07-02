@@ -130,6 +130,18 @@ export const experiences = [
     ],
     dateRange: ["01/2024", "04/2024"],
   },
+  {
+    title: "Senior Frontend Developer",
+    subtitle: "Medusa Group",
+    details: [
+      {
+        description:
+          "Leading the frontend development efforts, focusing on building dynamic and responsive web applications using ReactJS. Collaborating closely with cross-functional teams to deliver high-quality, user-centric solutions. Responsibilities include optimizing performance, ensuring code quality, and mentoring junior developers.Leading the frontend development efforts, focusing on building dynamic and responsive web applications using ReactJS. Collaborating closely with cross-functional teams to deliver high-quality, user-centric solutions. Responsibilities include optimizing performance, ensuring code quality, and mentoring junior developers.",
+        techs: ["NextJS", "ReactJS", "Typescript"],
+      },
+    ],
+    dataRange: ["04/2024", "Present"],
+  },
 ];
 
 export const projects = [
