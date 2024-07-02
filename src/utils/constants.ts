@@ -1,7 +1,7 @@
 export const seoData = {
   name: "Rasul Sofiyev",
   website: "https://sofiyevsr.com",
-  email: "sofiyevsr99@gmail.com",
+  email: "sofiyevsr@gmail.com",
   jobTitle: "Full Stack Developer",
   image: "https://sofiyevsr.com/rs.jpg",
 };
