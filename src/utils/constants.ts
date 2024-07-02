@@ -140,7 +140,7 @@ export const experiences = [
         techs: ["NextJS", "ReactJS", "Typescript"],
       },
     ],
-    dataRange: ["04/2024", "Present"],
+    dateRange: ["04/2024", "Present"],
   },
 ];
 
