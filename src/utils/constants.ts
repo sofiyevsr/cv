@@ -145,6 +145,19 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "Landing page template for mobile apps",
+    description:
+      "Fully customizable landing page template for mobile apps, built with Astro, React, TypeScript, TailwindCSS, and DaisyUI. Perfect for indie developers and small teams looking for a fast, modern, and themeable landing page solution",
+    link: "https://github.com/sofiyevsr/mobile-app-landing-template",
+    demo: "https://mobile-app-landing.pages.dev",
+    techs: [
+      "Typescript",
+      "ReactJS",
+      "Astro"
+    ],
+    active: true,
+  },
+  {
     title: "Multiplayer footballer guessing game",
     description:
       "Built a multiplayer game in which users have to guess name of football players' names with given clues in given time frame. There are multiple modes to play: Today's Challenge (changes every day by a cron job), Local (single player mode), Multiplayer (online mode with 2-5 players)",
